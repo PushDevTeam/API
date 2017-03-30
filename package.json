@@ -2,15 +2,17 @@
   "engines": {
     "node": "=4.2.1"
   },
-  "name": "azure-mobile-apps-quickstarts.backend.node.EmptySite",
+  "name": "pushdaily-backend",
   "version": "0.0.1",
-  "description": "Samples for Azure Mobile Apps",
-  "author": "Microsoft",
-  "repository": "Azure/azure-mobile-apps-quickstarts",
-  "license": "MIT",
+  "description": "Push Daily backend package configuration",
+  "author": "Push Daily",
+  "repository": "",
+  "license": "",
   "dependencies": {
-    "azure-mobile-apps": "^3.0.1",
-    "express": "^4.13.0"
+    "azure-mobile-apps": "^3.0.0",
+    "express": "^4.13.0",
+    "ntypescript": "^1.201609302242.1",
+    "swagger-ui": "^2.2.8"
   },
   "devDependencies": {}
 }
