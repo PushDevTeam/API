@@ -1,19 +1,19 @@
 {
   "autoIncrement": false,
   "read": {
-    "access": "anonymous"
+    "access": "authenticated"
   },
   "insert": {
-    "access": "anonymous"
+    "access": "authenticated"
   },
   "update": {
-    "access": "anonymous"
+    "access": "authenticated"
   },
   "delete": {
-    "access": "anonymous"
+    "access": "authenticated"
   },
   "undelete": {
-    "access": "anonymous"
+    "access": "authenticated"
   },
   "softDelete": false
 }
