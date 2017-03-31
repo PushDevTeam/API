@@ -2,7 +2,8 @@ var azureMobileApps = require('azure-mobile-apps');
 var table = azureMobileApps.table();
 table.columns = {
 	'title': 'string',
-	'description': 'string'
+	'description': 'string',
+	'trainer_id': 'string'
 };
  
 table.dynamicSchema = false;
