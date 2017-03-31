@@ -3,7 +3,8 @@ var table = azureMobileApps.table();
 table.columns = {
 	'title': 'string',
 	'description': 'string',
-	'trainer_id': 'string'
+	'trainer_id': 'string',
+	'duration': 'number'
 };
  
 table.dynamicSchema = false;
