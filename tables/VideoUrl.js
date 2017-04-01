@@ -2,7 +2,9 @@ var azureMobileApps = require('azure-mobile-apps');
 var table = azureMobileApps.table();
 table.columns = {
 	'video_id': 'string',
-	'base_url': 'string'
+	'url1': 'string',
+	'url2': 'string',
+	'resolution': 'string'
 };
  
 table.dynamicSchema = false;
