@@ -4,7 +4,7 @@ table.columns = {
 	'title': 'string',
 	'description': 'string',
 	'trainer_id': 'string',
-	'duration': 'number',
+	'duration': 'string',
 	'difficulty': 'string'
 };
  
