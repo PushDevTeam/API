@@ -4,7 +4,8 @@ table.columns = {
 	'title': 'string',
 	'description': 'string',
 	'trainer_id': 'string',
-	'duration': 'number'
+	'duration': 'number',
+	'difficulty': 'string'
 };
  
 table.dynamicSchema = false;
