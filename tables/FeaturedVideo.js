@@ -4,7 +4,8 @@ table.columns = {
 	'name': 'string',
 	'video_id': 'string',
 	'add_date': 'string',
-	'deactive_date': 'string'
+	'deactive_date': 'string',
+	'thumbUrl': 'string'
 };
  
 table.dynamicSchema = false;
