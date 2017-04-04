@@ -34,8 +34,3 @@ mobile.tables.initialize()
         app.use(mobile);    // Register the Azure Mobile Apps middleware
         app.listen(process.env.PORT || 3000);   // Listen for requests
     });
-
-mobile.api.initialize().then(function(){
-    app.use(mobile);
-    app.listen(process.env.PORT || 8000)
-})
