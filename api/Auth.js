@@ -1,4 +1,5 @@
-var auth = require('azure-mobile-apps/src/auth');
+//var auth = require('azure-mobile-apps/src/auth');
+var auth = Azure.MobileApps.Auth;
 var bcrypt = require('bcrypt');
 
 var app = {
