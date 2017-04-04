@@ -1,0 +1,57 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+/**
+@module azure-mobile-apps/src/express/middleware/handleError
+@description Creates middleware for handling and logging errors that occur
+within the SDK and user application.
+*/
+var log = require('../../logger'),
+    strings = require('../../utilities/strings');
+
+/**
+Create a new instance of the handleError middleware
+@param {configuration} configuration The mobile app configuration
+*/
+module.exports = function (configuration) {
+    return function (err, req, res, next) {
+        if(err.concurrency)
+            if(err.item) {
+                res.status(req.get('if-match') ? 412 : 409)
+                    .set("ETag", strings.getEtagFromVersion(err.item.version))
+                    .json(err.item);
+            } else {
+                res.status(404).json({ error: 'The item does not exist' });
+            }
+        else if (err.duplicate)
+            res.status(409).json(req.azureMobile.item);
+        else if (err.badRequest)
+            res.status(400).json(normaliseError(err));
+        else if (err.notFound)
+            res.status(404).json({ error: 'The item does not exist' });
+        else {
+            log.error(err);
+            res.status(500).json(normaliseError(err));
+        }
+    };
+
+    function normaliseError(err) {
+        if(!err)
+            return {
+                error: 'Unknown error'
+            };
+
+        if(err instanceof Error)
+            return {
+                error: err.message,
+                stack: configuration.debug ? err.stack : undefined
+            };
+
+        if(err.constructor === String)
+            return {
+                error: err
+            };
+
+        return err;
+    }
+}

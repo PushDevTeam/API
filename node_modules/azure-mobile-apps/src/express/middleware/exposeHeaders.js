@@ -1,0 +1,21 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+/**
+@module azure-mobile-apps/src/express/middleware/exposeHeaders
+@description Creates middleware that adds an HTTP response header to allow
+access to specific HTTP response headers when resources are loaded from a
+different origin.
+*/
+
+/**
+Create a new instance of the exposeHeaders middleware
+@param {configuration} configuration The mobile app configuration
+*/
+module.exports = function (configuration) {
+    return function (req, res, next) {
+        if(req.get('origin'))
+            res.set('access-control-expose-headers', configuration.cors.exposeHeaders);
+        next();
+    };
+};

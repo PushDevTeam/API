@@ -1,0 +1,92 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+/**
+@module azure-mobile-apps/src/express/tables
+@description This module contains functionality for adding tables to an Azure
+Mobile App. It returns a router that can be attached to an express app with
+some additional functions for registering tables.
+*/
+var express = require('express'),
+    importDefinition = require('../../configuration/importDefinition'),
+    table = require('./table'),
+    logger = require('../../logger'),
+    tableRouter = require('./tableRouter'),
+    dataModule = require('../../data'),
+    assert = require('../../utilities/assert').argument,
+    promises = require('../../utilities/promises');
+
+/**
+Create an instance of an express router for routing and handling table requests.
+@param {configuration} configuration
+@returns An express router with additional members described below.
+*/
+module.exports = function (configuration, data) {
+    configuration.tables = configuration.tables || {};
+
+    var router = express.Router(),
+        dataProvider = data || dataModule(configuration);
+
+    /**
+    Register a single table with the specified definition.
+    @function add
+    @param {string} name - The name of the table. HTTP operations will be exposed on this route.
+    @param {tableDefinition|module:azure-mobile-apps/src/express/tables/table} definition - The definition for the table.
+    */
+    router.add = function (name, definition) {
+        assert(name, 'A table name was not specified');
+        logger.verbose("Adding table definition for " + name);
+        definition = buildTableDefinition(name, definition);
+        configuration.tables[definition.name] = definition;
+        router.use('/' + definition.name, tableRouter(definition));
+    };
+
+    /**
+    Import a file or folder of modules containing table definitions
+    @function import
+    @param {string} path Path to a file or folder containing modules that export either a {@link tableDefinition} or
+    {@link module:azure-mobile-apps/src/express/tables/table table object}.
+    The path is relative to configuration.basePath that defaults to the location of your startup module.
+    The table name will be derived from the physical file name.
+    */
+    router.import = importDefinition.import(configuration.basePath, router.add);
+
+    // expose configuration through zumoInstance.tables.configuration
+    router.configuration = configuration.tables;
+
+    router.initialize = function () {
+        return promises.series(Object.keys(configuration.tables), function (name) {
+            return dataProvider(configuration.tables[name]).initialize();
+        });
+    };
+
+    return router;
+
+    function buildTableDefinition(name, definition) {
+        // if the definition doesn't have a router function, wrap it in a table definition object
+        if(!definition || typeof definition.execute !== 'function')
+            definition = table(definition);
+
+        definition.name = definition.name || name;
+        definition.containerName = definition.containerName || definition.databaseTableName || definition.name || name;
+        definition.supportsSoftDelete = definition.softDelete;
+        definition.userIdColumn = definition.userIdColumn || configuration.userIdColumn;
+
+        if (configuration.data && !definition.hasOwnProperty('dynamicSchema'))
+            definition.dynamicSchema = configuration.data.dynamicSchema;
+        if (configuration.data && !definition.hasOwnProperty('schema'))
+            definition.schema = configuration.data.schema;
+        if (!definition.hasOwnProperty('maxTop'))
+            definition.maxTop = configuration.maxTop;
+        if (!definition.hasOwnProperty('pageSize'))
+            definition.pageSize = configuration.pageSize;
+
+        if(definition.perUser) {
+            // this ensures the required user id column is created when initialize is called
+            definition.columns = definition.columns || {};
+            definition.columns[definition.userIdColumn] = 'string';
+        }
+        
+        return definition;
+    }
+}

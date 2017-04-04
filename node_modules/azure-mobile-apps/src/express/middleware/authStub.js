@@ -1,0 +1,53 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+var authModule = require('../../auth'),
+    templates = require('../../templates');
+
+/*
+This is (being) tested with Javascript, Xamarin, Android and Windows 8.1. iOS pending. Notes:
+- This does not work with WindowsAuthenticationBroker (i.e. Windows platforms). It is documented to not work against localhost. It should work in an emulator, but requires HTTPS.
+- Android currently requires the server to be running on port 80. A fix is in progress.
+- Android requires a redirect from .auth/login/provider. If the page completes loading, the provider is considered to be not enabled.
+  If we want to provide a page to allow selection from multiple defined logins or allow cancellation, it must be rendered on an intermediate page.
+*/
+
+module.exports = function (configuration) {
+    if(configuration && configuration.auth && Object.keys(configuration.auth).length > 0) {
+        var auth = authModule(configuration.auth);
+
+        return function (req, res, next) {
+            if (req.params.provider !== 'done') {
+                var claims = payload(req.params.provider),
+                    oauth = {
+                        authenticationToken: auth.sign(claims),
+                        user: { userId: claims.sub || 'authentication stub user' }
+                    };
+
+                res.redirect('done#token=' + encodeURIComponent(JSON.stringify(oauth)));
+            } else {
+                // most client platforms watch for a redirect to .auth/login/done with a token on the querystring
+                // this template also extracts the token from the querystring and does a postMessage for Javascript platforms
+                res.send(templates('authStub.html'));
+            }
+        };
+    } else {
+        return function (req, res, next) {
+            next();
+        };
+    }
+
+    function payload(provider) {
+        if(configuration.authStubClaims) {
+            if(configuration.authStubClaims.constructor === Function)
+                return configuration.authStubClaims();
+            else
+                return configuration.authStubClaims;
+        }
+
+        return {
+            "sub": "sid:00000000000000000000000000000000",
+            "idp": provider,
+        }
+    }
+};

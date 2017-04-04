@@ -1,0 +1,6 @@
+module.exports = function (configuration) {
+    return function (req, res, next) {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.send({ status: 'Running' });
+    }
+}

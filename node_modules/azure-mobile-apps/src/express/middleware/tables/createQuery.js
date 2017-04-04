@@ -1,0 +1,21 @@
+﻿// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+/**
+@module azure-mobile-apps/src/express/middleware/createQuery
+@description Creates an instance of a {@link module:queryjs/Query queryjs Query object}
+and attaches it to the request object.
+*/
+
+var queries = require('../../../query');
+
+/**
+Create a new instance of the createQuery middleware
+@param {tableDefinition} table The table that is being queried
+*/
+module.exports = function (table) {
+    return function (req, res, next) {
+        req.azureMobile.query = queries.create(table.containerName);
+        next();
+    };
+};

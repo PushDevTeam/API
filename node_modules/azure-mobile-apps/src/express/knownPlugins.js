@@ -1,0 +1,22 @@
+﻿// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+
+module.exports = function (configuration, logger) {
+    return ['azure-mobile-apps-files'].reduce(detectPlugin, []);
+
+    function detectPlugin(plugins, name) {
+        try {
+            var pluginModule = require(name);
+            try {
+                plugins.push(pluginModule(configuration, logger));
+                logger.info('Loaded plugin ' + name);
+            } catch (ex) {
+                logger.error('Found plugin ' + name + ' but failed to load: ', ex);
+            }
+        } catch(ex) {
+            logger.silly('Not loading plugin ' + name + ': ' + ex.message);
+        }
+        return plugins;
+    }
+}
