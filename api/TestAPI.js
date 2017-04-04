@@ -1,4 +1,4 @@
-module.exports = {
+var app = {
     "get": function (req, res, next) {
         
         //console.log('req', req);
@@ -7,3 +7,5 @@ module.exports = {
         req.end('test TestAPI response');
     }
 }
+
+module.exports = app;
