@@ -1,3 +1,6 @@
+var auth = require('auth');
+var bcrypt = require('bcrypt');
+
 module.exports = {
     // validates a username and password and returns a JWT token if successful
     post: function (req, res, next) {
