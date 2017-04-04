@@ -17,25 +17,26 @@ var app = express();
 app.oauth = new OAuthServer({
     model:{// We support generators.
   getAccessToken: function *() {
-    yield somethingAsync();
+    //yield somethingAsync();
 
-    return 'works!'
+    return 'access token works!'
   },
 
   // Or, async/await (using _babel_).
   getAuthorizationCode: async function() {
-    await somethingAsync();
+    //await somethingAsync();
 
-    return 'works';
+    return 'authorization code works';
   },
 
   // Or, calling a node-style callback.
   getClient: function(done) {
     if (true) {
-      return done(new Error());
+      //return done(new Error());
+      return 'new error in getClient';
     }
 
-    done(null, 'works!');
+    //done(null, 'works!');
   },
 
   // Or, returning a promise.
