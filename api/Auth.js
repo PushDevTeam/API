@@ -1,5 +1,5 @@
-var auth = require('auth');
-var bcrypt = require('bcrypt');
+var auth = require('azure-mobile-apps/src/auth'),
+    bcrypt = require('bcrypt');
 
 module.exports = {
     // validates a username and password and returns a JWT token if successful
@@ -35,7 +35,7 @@ module.exports = {
             })
             .catch(next);
     }
-}
+};
 
 function createResponse(sign, user) {
     return {
