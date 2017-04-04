@@ -5,7 +5,8 @@
 // This is a base-level Azure Mobile App SDK.
 var express = require('express'),
     azureMobileApps = require('azure-mobile-apps');
-
+    auth = require('azure-mobile-apps/src/auth'),
+    bcrypt = require('bcrypt');
 // Set up a standard Express app
 var app = express();
 

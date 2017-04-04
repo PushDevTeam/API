@@ -17,7 +17,8 @@ table.columns = {
 	'fit_level': 'string',
 	'fitness_goals': 'string',
 	'cast': 'string',
-	'exercise_types': 'string'
+	'exercise_types': 'string',
+	'password': 'string'
 };
  
 table.dynamicSchema = false;
