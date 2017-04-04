@@ -8,7 +8,7 @@ var app = {
         var context = req.azureMobile,
             // the sign function creates a signed JWT token from provided claims
             sign = auth(context.configuration.auth).sign;
-
+        
         context.tables('User')
             .where({ id: req.body.username })
             .read()
