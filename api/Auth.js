@@ -1,6 +1,7 @@
 //var auth = require('azure-mobile-apps/src/auth');
-var auth = Azure.MobileApps.Auth;
-var bcrypt = require('bcrypt');
+//var bcrypt = require('bcrypt');
+var auth: any;
+var bcrypt: any;
 
 var app = {
     // validates a username and password and returns a JWT token if successful
