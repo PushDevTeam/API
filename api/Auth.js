@@ -8,7 +8,7 @@ var app = {
             // the sign function creates a signed JWT token from provided claims
             sign = auth(context.configuration.auth).sign;
 
-        context.tables('users')
+        context.tables('User')
             .where({ id: req.body.username })
             .read()
             .then(function (users) {
@@ -25,7 +25,7 @@ var app = {
         var context = req.azureMobile,
             sign = auth(context.configuration.auth).sign;
 
-        context.tables('users')
+        context.tables('User')
             .insert({
                 id: req.body.username,
                 password: hashPassword(req.body.password)

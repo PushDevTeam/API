@@ -4,7 +4,7 @@
 
 // This is a base-level Azure Mobile App SDK.
 var express = require('express'),
-    azureMobileApps = require('azure-mobile-apps'),
+    azureMobileApps = require('azure-mobile-apps/index'),
     auth = require('azure-mobile-apps/src/auth'),
     bcrypt = require('bcrypt');
 // Set up a standard Express app
@@ -17,8 +17,6 @@ var app = express();
 // environment or an auxiliary file.  For more information, see
 // http://azure.github.io/azure-mobile-apps-node/global.html#configuration
 var mobile = azureMobileApps({
-    // Explicitly enable the Azure Mobile Apps home page
-    homePage: true
 });
 
 // Import the files from the tables directory to configure the /tables endpoint
