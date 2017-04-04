@@ -58,7 +58,7 @@ function hashPassword(password) {
 }
 
 function validatePassword(password, hashed) {
-    return simplecrypt().decrypt(pasword) === hashed;
+    return simplecrypt().decrypt(password) === hashed;
     
     //return simplecrypt.compareSync(password, hashed)
 }

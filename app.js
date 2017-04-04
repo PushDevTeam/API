@@ -8,11 +8,46 @@ var express = require('express'),
     auth = require('azure-mobile-apps/src/auth'),
     oauth2svr = require('oauth2-server'),
     expressoauth = require('express-oauth-server'),
-    bodyparser = require('body-parser'),
+    bodyParser = require('body-parser'),
     simplecrypt = require('simplecrypt');
 //    bcrypt = require('bcrypt');
 // Set up a standard Express app
 var app = express();
+
+app.oauth = new OAuthServer({
+    model:{// We support generators.
+  getAccessToken: function *() {
+    yield somethingAsync();
+
+    return 'works!'
+  },
+
+  // Or, async/await (using _babel_).
+  getAuthorizationCode: async function() {
+    await somethingAsync();
+
+    return 'works';
+  },
+
+  // Or, calling a node-style callback.
+  getClient: function(done) {
+    if (true) {
+      return done(new Error());
+    }
+
+    done(null, 'works!');
+  },
+
+  // Or, returning a promise.
+  getUser: function() {
+    return new Promise('works!');
+  }}});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(app.oauth.authorize());
+
+app.use(function(req, res){res.send('Secret Area');});
 // If you are producing a combined Web + Mobile app, then you should handle
 // anything like logging, registering middleware, etc. here
 
