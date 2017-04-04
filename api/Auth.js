@@ -1,7 +1,7 @@
 var auth = require('azure-mobile-apps/src/auth'),
     bcrypt = require('bcrypt');
 
-module.exports = {
+var app = {
     // validates a username and password and returns a JWT token if successful
     post: function (req, res, next) {
         var context = req.azureMobile,
@@ -55,3 +55,5 @@ function hashPassword(password) {
 function validatePassword(password, hashed) {
     return bcrypt.compareSync(password, hashed)
 }
+
+module.exports = app;
