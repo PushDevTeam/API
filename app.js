@@ -7,7 +7,7 @@ var express = require('express'),
     azureMobileApps = require('azure-mobile-apps');
 
 // Set up a standard Express app
-let app = express();
+var app = express();
 
 // If you are producing a combined Web + Mobile app, then you should handle
 // anything like logging, registering middleware, etc. here
@@ -15,7 +15,7 @@ let app = express();
 // Configuration of the Azure Mobile Apps can be done via an object, the
 // environment or an auxiliary file.  For more information, see
 // http://azure.github.io/azure-mobile-apps-node/global.html#configuration
-let mobile = azureMobileApps({
+var mobile = azureMobileApps({
     // Explicitly enable the Azure Mobile Apps home page
     homePage: true
 });
