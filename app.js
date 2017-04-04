@@ -8,6 +8,7 @@ var express = require('express'),
     auth = require('azure-mobile-apps/src/auth'),
     oauth2svr = require('oauth2-server'),
     expressoauth = require('express-oauth-server'),
+    bodyparser = require('body-parser'),
     simplecrypt = require('simplecrypt');
 //    bcrypt = require('bcrypt');
 // Set up a standard Express app

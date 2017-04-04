@@ -11,6 +11,7 @@
   "dependencies": {
     "azure-mobile-apps": "^3.0.0",
     "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
     "esprima": "^3.1.3",
     "express": "^4.13.0",
     "express-oauth-server": "^2.0.0-b1",
