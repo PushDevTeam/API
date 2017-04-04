@@ -23,7 +23,7 @@ var mobile = azureMobileApps({});
 mobile.tables.import('./tables');
 
 // Import the files from the api directory to configure the /api endpoint
-//msobile.api.import('./api');
+mobile.api.import('./api');
 
 // Initialize the database before listening for incoming requests
 // The tables.initialize() method does the initialization asynchronously
