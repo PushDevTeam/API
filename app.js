@@ -14,41 +14,6 @@ var express = require('express'),
 // Set up a standard Express app
 var app = express();
 
-app.oauth = new OAuthServer({
-    model:{// We support generators.
-  getAccessToken: function *() {
-    //yield somethingAsync();
-
-    return 'access token works!'
-  },
-
-  // Or, async/await (using _babel_).
-  getAuthorizationCode: async function() {
-    //await somethingAsync();
-
-    return 'authorization code works';
-  },
-
-  // Or, calling a node-style callback.
-  getClient: function(done) {
-    if (true) {
-      //return done(new Error());
-      return 'new error in getClient';
-    }
-
-    //done(null, 'works!');
-  },
-
-  // Or, returning a promise.
-  getUser: function() {
-    return new Promise('works!');
-  }}});
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(app.oauth.authorize());
-
-app.use(function(req, res){res.send('Secret Area');});
 // If you are producing a combined Web + Mobile app, then you should handle
 // anything like logging, registering middleware, etc. here
 
