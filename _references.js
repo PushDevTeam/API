@@ -3,4 +3,3 @@
 // ----------------------------------------------------------------------------
 
 ///<reference path="typings/azure-mobile-apps/azure-mobile-apps.d.ts" />
-///<reference path="typings/express/express.d.ts" />
