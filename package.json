@@ -13,6 +13,7 @@
     "bcrypt": "^1.0.2",
     "esprima": "^3.1.3",
     "express": "^4.13.0",
+    "express-oauth-server": "^2.0.0-b1",
     "ntypescript": "^1.201609302242.1",
     "oauth2-server": "^2.4.1",
     "simplecrypt": "^0.1.0",
