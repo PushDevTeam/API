@@ -1,5 +1,8 @@
-var app = {
-    "get": function (req, res, next) {
+var azureMobileApps = require('azure-mobile-apps');
+
+var newapp = azureMobileApps.api();
+
+newapp.get = function (req, res, next) {
         
         //console.log('req', req);
         //console.log('res', res);
@@ -9,6 +12,5 @@ var app = {
         var date = { currentTime: Date.now() };
         res.status(200).type('application/json').send(date);
     }
-}
 
-module.exports = app;
+module.exports = newapp;

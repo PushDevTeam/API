@@ -4,7 +4,9 @@
 
 // This is a base-level Azure Mobile App SDK.
 var express = require('express'),
-    azureMobileApps = require('azure-mobile-apps');
+    azureMobileApps = require('azure-mobile-apps'),
+    auth = require('azure-mobile-apps/src/auth'),
+    bcrypt = require('bcrypt');
 // Set up a standard Express app
 var app = express();
 // If you are producing a combined Web + Mobile app, then you should handle
@@ -20,7 +22,7 @@ var mobile = azureMobileApps({});
 mobile.tables.import('./tables');
 
 // Import the files from the api directory to configure the /api endpoint
-mobile.api.import('./api');
+//msobile.api.import('./api');
 
 // Initialize the database before listening for incoming requests
 // The tables.initialize() method does the initialization asynchronously
