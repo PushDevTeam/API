@@ -7,7 +7,8 @@
     //azureMobileApps = require('azure-mobile-apps');
 // Set up a standard Express app
 var app = require('express')();
-
+var bcrypt = require('bcrypt');
+var auth = require('azure-mobile-apps/src/auth');
 // If you are producing a combined Web + Mobile app, then you should handle
 // anything like logging, registering middleware, etc. here
 
