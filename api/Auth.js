@@ -1,5 +1,5 @@
 var auth = require('azure-mobile-apps/src/auth'),
-    bcrypt = require('bcrypt');
+    simplecrypt = require('simplecrypt');
 
 
 var app = {
@@ -50,11 +50,15 @@ function createResponse(sign, user) {
 }
 
 function hashPassword(password) {
-    return bcrypt.hashSync(password, 10);
+    var sc = simplecrypt().encrypt(password);
+    return sc;
+    //return simplecrypt.hashSync(password, 10);
 }
 
 function validatePassword(password, hashed) {
-    return bcrypt.compareSync(password, hashed)
+    return simplecrypt().decrypt(pasword) === hashed;
+    
+    //return simplecrypt.compareSync(password, hashed)
 }
 
 module.exports = app;
