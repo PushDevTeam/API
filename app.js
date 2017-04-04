@@ -15,6 +15,7 @@ var app = express();
 // http://azure.github.io/azure-mobile-apps-node/global.html#configuration
 var mobile = azureMobileApps({});
 
+
 // Import the files from the tables directory to configure the /tables endpoint
 mobile.tables.import('./tables');
 
