@@ -1,4 +1,5 @@
 var auth = require('azure-mobile-apps/src/auth'),
+    oauth2svr = require('oauth2-server'),
     simplecrypt = require('simplecrypt');
 
 
