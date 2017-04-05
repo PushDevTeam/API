@@ -12,7 +12,7 @@ var app = {
             sign = auth(context.configuration.auth).sign;
         
         context.tables('UserAuth')
-            .where({ id: req.body.username })
+            .where({ username: req.body.username })
             .read()
             .then(function (users) {
                 if(users.length === 0)
@@ -32,7 +32,7 @@ var app = {
 
         context.tables('UserAuth')
             .insert({
-                id: req.body.username,
+                username: req.body.username,
                 password: hashPassword(req.body.password)
             })
             .then(function (user) {
