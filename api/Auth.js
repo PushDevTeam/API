@@ -11,11 +11,13 @@ var app = {
             // the sign function creates a signed JWT token from provided claims
             sign = auth(context.configuration.auth).sign;
         
-        context.tables('User')
-            .where({ username: req.body.username })
+        context.tables('UserAuth')
+            .where({ id: req.body.username })
             .read()
             .then(function (users) {
-                if(users.length === 1 && validatePassword(req.body.password, users[0].password))
+                if(users.length === 0)
+                    res.status(401).send("User not found in database");
+                else if(users.length === 1 && validatePassword(req.body.password, users[0].password))
                     res.json(createResponse(sign, users[0]));
                 else
                     res.status(401).send("Incorrect username or password");
@@ -28,9 +30,9 @@ var app = {
         var context = req.azureMobile,
             sign = auth(context.configuration.auth).sign;
 
-        context.tables('User')
+        context.tables('UserAuth')
             .insert({
-                username: req.body.username,
+                id: req.body.username,
                 password: hashPassword(req.body.password)
             })
             .then(function (user) {
