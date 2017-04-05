@@ -32,7 +32,7 @@ var app = {
 
         context.tables('UserAuth')
             .insert({
-                username: req.body.username,
+                username: req.body.toString(),
                 password: hashPassword(req.body.password)
             })
             .then(function (user) {
@@ -54,13 +54,13 @@ function createResponse(sign, user) {
 }
 
 function hashPassword(password) {
-    var sc = simplecrypt().encrypt(password);
-    return sc;
+    return simplecrypt().encrypt(password);
     //return simplecrypt.hashSync(password, 10);
 }
 
 function validatePassword(password, hashed) {
-    return simplecrypt().decrypt(hashed) === password;
+    return this.hashPassword(password) == hashed;
+    //return simplecrypt().decrypt(hashed) == password;
     
     //return simplecrypt.compareSync(password, hashed)
 }
