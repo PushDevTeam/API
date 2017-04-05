@@ -10,7 +10,7 @@ var app = {
             sign = auth(context.configuration.auth).sign;
         
         context.tables('UserAuth')
-            .where({ username: req.body })
+            .where({ username: req.body.toString() })
             .read()
             .then(function (users) {
                 if(users.length === 0)
