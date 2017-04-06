@@ -10,7 +10,7 @@ var app = {
             sign = auth(context.configuration.auth).sign;
         
         context.tables('UserAuth')
-            .where({ username: req.body.username })
+            .where({ username: req.body.username, authtype: req.body.authtype })
             .read()
             .then(function (users) {
                 if(users.length === 0)
@@ -30,14 +30,26 @@ var app = {
             sign = auth(context.configuration.auth).sign;
 
         context.tables('UserAuth')
+            .where({ username: req.body.username, authtype: req.body.authtype })
+            .read()
+            .then(function(users){
+                if(users.length !== 0)
+                    res.status(401).send("this user already exists!")
+            })
+            .then((users)=>{ 
+                context.tables('UserAuth').where({username: req.body.username, authtype: req.body.authtype}).read()
+                
+            
             .insert({
                 username: req.body.username,
-                password: hashPassword(req.body.password)
+                password: hashPassword(req.body.password),
+                authtype: req.body.authtype
             })
             .then(function (user) {
                 res.json(createResponse(sign, user));
             })
             .catch(next);
+        })
     }
 };
 
