@@ -44,6 +44,10 @@ var app = {
     }
 };
 
+//DO NOT CHANGE, or all db passwords will become invalid
+var pw = "a9b9d8e3-6fc9-442d-843d-8c323a756a0d";
+var s = "c652a5ad-ad85-4951-b322-e05197cda6c1";
+
 function createResponse(sign, user) {
     return {
         // this JWT token must be applied on the Mobile Apps client using the appropriate client APIs
@@ -56,15 +60,16 @@ function createResponse(sign, user) {
 }
 
 function hashPassword(password) {
-    return simplecrypt().encrypt(password);
+    return simplecrypt({password: pw, salt: s}).encrypt(password);
     //return simplecrypt.hashSync(password, 10);
 }
 
 function validatePassword(password, hashed) {
-    return password == simplecrypt().decrypt(hashed);
+    return password == simplecrypt({password: pw, salt: s}).decrypt(hashed);
     //return simplecrypt().decrypt(hashed) == password;
     
     //return simplecrypt.compareSync(password, hashed)
 }
+
 
 module.exports = app;
