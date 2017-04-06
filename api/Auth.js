@@ -14,7 +14,7 @@ var app = {
             .read()
             .then(function (users) {
                 if(users.length === 0)
-                    res.status(402).type('application/json').send("User not found");
+                    res.status(401).type('application/json').send("User not found");
                 
                 if(users.length === 1 && validatePassword(req.body.password, users[0].password))
                     res.json(createResponse(sign, users[0]))
