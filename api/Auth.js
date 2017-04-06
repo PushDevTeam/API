@@ -17,7 +17,8 @@ var app = {
                     res.status(200).type('application/json').send(users)
                 }
                 else if(users.length === 1 && validatePassword(req.body.password, users[0].password)) {
-                    res.json(createResponse(sign, users[0]))}
+                    res.json(createResponse(sign, users[0]))
+                }
                 else
                 {
                     res.status(401).send("Incorrect username or password");
