@@ -15,10 +15,10 @@ var app = {
             .then(function (users) {
                 if(users.length === 0)
                     res.status(401).type('application/json').send("User not found");
-                
-                if(users.length === 1 && validatePassword(req.body.password, users[0].password))
+                var validated = validatePassword(req.body.password, users[0].password);
+                if(users.length === 1 && validated)
                     res.json(createResponse(sign, users[0]))
-                if(user.length === 1 && !validatePassword(req.body.password, users[0].password))
+                if(user.length === 1 && !validated)
                     res.status(401).send("Incorrect username or password");
             })
             .catch(next);
