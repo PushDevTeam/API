@@ -13,12 +13,15 @@ var app = {
             .where({ username: req.body.username })
             .read()
             .then(function (users) {
-                if(users.length === 0)
-                    res.status(401).send("User not found in database", users);
-                else if(users.length === 1 && validatePassword(req.body.password, users[0].password))
-                    res.json(createResponse(sign, users[0]));
+                if(users.length === 0){
+                    res.status(200).type('application/json').send(users)
+                }
+                else if(users.length === 1 && validatePassword(req.body.password, users[0].password)) {
+                    res.json(createResponse(sign, users[0]))}
                 else
+                {
                     res.status(401).send("Incorrect username or password");
+                }
             })
             .catch(next);
     },
