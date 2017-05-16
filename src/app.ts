@@ -32,8 +32,8 @@ class App {
 
   // Configure azure mobile apps api
   azureConfig(){
-      this.azure.tables.import('./../tables');
-      this.azure.api.import('./../api');
+      this.azure.tables.import('./tables');
+      this.azure.api.import('./api');
   }
   // Configure Express middleware.
   private middleware(): void {
