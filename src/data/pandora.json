@@ -1,0 +1,67 @@
+[
+    {
+    "description":"placeholder description core basics",
+    "difficulty":"Medium",
+    "duration":"*20:00",
+    "featureThumbUrl":"https://pushdaily.blob.core.windows.net/asset-0b0c8d31-c327-4d52-a3d6-d5b372cfa963/Home_Slider_Three.jpg?sv=2015-07-08&sr=c&si=3620dbe6-5622-48da-99da-619b55fa8170&sig=kmG4CtBpmYGH5mARoe%2FDP4DoCQth6pApGWrivUF6puM%3D&st=2017-04-03T07%3A53%3A01Z&se=2117-04-03T07%3A53%3A01Z",
+    "id":"3da38c6a-feed-4c42-9d83-c31f501fbca5",
+    "isfeatured":true,
+    "tags":["tag 1", "tag 2", "tag 3", "tag 4", "tag 5", "tag 6", "tag 7"],
+    "thumbUrl":"https://pushdaily.blob.core.windows.net/asset-0f658369-5c90-4cf4-a791-4bd94187a578/PUSH_Video_Thumb_HIIT.jpg?sv=2015-07-08&sr=c&si=054fecc4-2010-42d7-980f-eadbffa049ea&sig=1yy8ciGoGzQ2Wy1iYjJCVbxTqC5u%2FhYsYBZU%2B5WSZbU%3D&st=2017-04-02T00%3A09%3A49Z&se=2117-04-02T00%3A09%3A49Z",
+    "title":"Core Basics",
+    "trainer":"DEFAULT TRAINER",
+    "videoUrl":"https://pushdaily.blob.core.windows.net/asset-bef5963b-10f7-492d-a191-78e4aa0b7121/Fall 2015 HIIT Workout_640x360_1000.mp4?sv=2015-07-08&sr=c&si=90de2574-b4da-4878-ae28-3f8d24fd8948&sig=R41OTKvoQ0hZta%2FogzmoCwKOjUtNW4XoB%2FW5L%2F%2FiZLE%3D&st=2017-04-01T20%3A10%3A13Z&se=2117-04-01T20%3A10%3A13Z"
+    },
+    {
+    "description":"placeholder description starting strength",
+    "difficulty":"Medium",
+    "duration":"*20:00",
+    "featureThumbUrl":"",
+    "id":"60805857-5031-47a3-b531-410b7504431e",
+    "isfeatured":false,
+    "tags":["tag 1", "tag 2", "tag 3", "tag 4", "tag 5", "tag 6", "tag 7"],
+    "thumbUrl":"https://pushdaily.blob.core.windows.net/asset-0f658369-5c90-4cf4-a791-4bd94187a578/PUSH_Video_Thumb_HIIT.jpg?sv=2015-07-08&sr=c&si=054fecc4-2010-42d7-980f-eadbffa049ea&sig=1yy8ciGoGzQ2Wy1iYjJCVbxTqC5u%2FhYsYBZU%2B5WSZbU%3D&st=2017-04-02T00%3A09%3A49Z&se=2117-04-02T00%3A09%3A49Z",
+    "title":"Starting Strength",
+    "trainer":"DEFAULT TRAINER",
+    "videoUrl":"https://pushdaily.blob.core.windows.net/asset-2f6b4354-3949-4ce3-984b-a9206c486b61/NV NOW HIIT Workout Short Edit (_640x360_1000.mp4?sv=2015-07-08&sr=c&si=f0a35ee1-cbc1-4d80-82e6-a6b7f44f0e8c&sig=%2Bu8UeEWP4NbpZAq%2BtYvlTob4hTIJSZ6kdynTGIu451M%3D&st=2017-04-01T20%3A10%3A37Z&se=2117-04-01T20%3A10%3A37Z"
+    },
+    {
+    "description":"placeholder description for bodyweight intermediate",
+    "difficulty":"Medium",
+    "duration":"*20:00",
+    "featureThumbUrl":"https://pushdaily.blob.core.windows.net/asset-26a078e2-1362-4a31-8fcf-e5cdb0fde7c6/Home_Slider_One.jpg?sv=2015-07-08&sr=c&si=1efcac16-cb10-47c7-92ff-e155c9bfb804&sig=NcJ9srvRcKBc0IDsY3fs7xU0oyas7tM4FobKksofLo4%3D&st=2017-04-03T07%3A53%3A07Z&se=2117-04-03T07%3A53%3A07Z",
+    "id":"9ea0466a-aef1-4618-9a33-f9ed60fa626b",
+    "isfeatured":true,
+    "tags":["tag 1", "tag 2", "tag 3", "tag 4", "tag 5", "tag 6", "tag 7"],
+    "thumbUrl":"https://pushdaily.blob.core.windows.net/asset-d009e52e-1fad-4197-93d1-805476797019/PUSH_Video_Thumb_StartingStrengthLvl1.jpg?sv=2015-07-08&sr=c&si=9eacaf72-574f-49a9-8a62-8ca4a9c6a09c&sig=gnnPh6bO6rqBBwFuxzOL2mNIin6BDwvIl4aPMSP2Xt4%3D&st=2017-04-02T00%3A04%3A23Z&se=2117-04-02T00%3A04%3A23Z",
+    "title":"Bodyweight Intermediate",
+    "trainer":"DEFAULT TRAINER",
+    "videoUrl":"https://pushdaily.blob.core.windows.net/asset-472513ba-485f-466b-a1a7-c2cc1f9e4d85/Starting Strength - Level 1_640x360_1000.mp4?sv=2015-07-08&sr=c&si=057a484d-2d56-4eae-bb01-d5a187f164fb&sig=futKCVtW2l9Vor8npTvjPbfTDzeXtXQF6Uq2oqrdo70%3D&st=2017-03-31T07%3A11%3A36Z&se=2117-03-31T07%3A11%3A36Z"
+    },
+    {
+    "description":"placeholder description for nv now hiit workout short edit",
+    "difficulty":"Medium",
+    "duration":"*20:00",
+    "featureThumbUrl":"",
+    "id":"ae2f89d0-8436-45e1-9f59-97189dbdaea5",
+    "isfeatured":false,
+    "tags":["tag 1", "tag 2", "tag 3", "tag 4", "tag 5", "tag 6", "tag 7"],
+    "thumbUrl":"https://pushdaily.blob.core.windows.net/asset-bcc5a587-0e9b-49a8-bff8-063b73162db7/PUSH_Video_Thumb_Bodyweight_Intermediate.jpg?sv=2015-07-08&sr=c&si=2b6f1121-d3ca-44c0-b2fa-822e20401135&sig=iYOimzLIotCtUFHjfFe6Z0M%2FqjxcMw%2BLQUqO5YuUBo4%3D&st=2017-04-02T00%3A10%3A45Z&se=2117-04-02T00%3A10%3A45Z",
+    "title":"NV NOW HIIT Workout Short Edit",
+    "trainer":"DEFAULT TRAINER",
+    "videoUrl":"https://pushdaily.blob.core.windows.net/asset-0f770764-7c73-412b-bbe0-82d70648f35b/Bodyweight Intermediate_640x360_1000.mp4?sv=2015-07-08&sr=c&si=1216329a-6b52-4cc4-bb56-8c4c7af7648f&sig=oJNLGWf1AYaYowD3SzcC8mPjR1svBNN1oBSOWbUfQV4%3D&st=2017-03-31T01%3A15%3A12Z&se=2117-03-31T01%3A15%3A12Z"
+    },
+    {
+    "description":"placeholder description for fall 2015 hiit workout",
+    "difficulty":"Medium",
+    "duration":"*20:00",
+    "featureThumbUrl":"https://pushdaily.blob.core.windows.net/asset-35c4c78e-e123-43bd-aff2-d04800a54fbc/Home_Slider_Two.jpg?sv=2015-07-08&sr=c&si=41dc0961-ff61-44e0-8658-0e5ae59bbab3&sig=2FBnOPPWGbZEYk7Lh3Or0Y4JGJrL33vhNpruLffetL0%3D&st=2017-04-03T07%3A52%3A52Z&se=2117-04-03T07%3A52%3A52Z",
+    "id":"f6b4929b-c615-4151-a58a-573e30df8bf2",
+    "isfeatured":true,
+    "tags":["tag 1", "tag 2", "tag 3", "tag 4", "tag 5", "tag 6", "tag 7"],
+    "thumbUrl":"https://pushdaily.blob.core.windows.net/asset-0f658369-5c90-4cf4-a791-4bd94187a578/PUSH_Video_Thumb_HIIT.jpg?sv=2015-07-08&sr=c&si=054fecc4-2010-42d7-980f-eadbffa049ea&sig=1yy8ciGoGzQ2Wy1iYjJCVbxTqC5u%2FhYsYBZU%2B5WSZbU%3D&st=2017-04-02T00%3A09%3A49Z&se=2117-04-02T00%3A09%3A49Z",
+    "title":"Fall 2015 HIIT Workout",
+    "trainer":"DEFAULT TRAINER",
+    "videoUrl":"https://pushdaily.blob.core.windows.net/asset-a3ea0269-10ce-4298-8003-75a23d6db2f2/What is STREET VYBE_640x360_1000640x360_1000.mp4?sv=2015-07-08&sr=c&si=56bc448b-2760-49fc-8a25-4a7de3a738d8&sig=2Vock0i4uKpULpP6h1NUhEF2KGZiysYHQ9tPK54Akqo%3D&st=2017-04-01T20%3A43%3A38Z&se=2117-04-01T20%3A43%3A38Z"
+    }
+]

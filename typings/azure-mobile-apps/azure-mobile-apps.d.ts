@@ -27,7 +27,7 @@ declare module "azure-mobile-apps/src/query" {
     export = query;
 }
 
-declare module Azure.MobileApps {
+export declare module Azure.MobileApps {
     // the additional Platforms namespace is required to avoid collisions with the main Express namespace
     export module Platforms {
         export module Express {
