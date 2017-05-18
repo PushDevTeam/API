@@ -16,7 +16,7 @@ class PandoraRouter {
         this.router.get('/user/getStationList', this.user.getStationList);
         this.router.get('/station/getPlaylist/:id', this.station.getPlaylist);
         this.router.get('/station/getStation/:stationToken', this.station.getStation);
-        this.router.post('/station/addFeedback/:stationToken/:trackToken/:isPositive', this.station.addFeedback);
+        this.router.post('/station/addFeedback/:stationToken/:trackToken/:songIdentity/:isPositive', this.station.addFeedback);
     }
 }
 exports.PandoraRouter = PandoraRouter;
