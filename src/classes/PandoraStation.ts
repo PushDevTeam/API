@@ -64,7 +64,7 @@ export class PandoraStation extends PandoraBase {
             "includeExtendedAttributes": true
         }, function (err, resp){
             if (err) throw err;
-            let items = JSON.parse(resp._body).feedback.thumbsUp;
+            let items = JSON.parse(resp).feedback.thumbsUp;
             for (let i=0; i<items.length; i++){
                 let item = items[i];
                 if (item.songIdentity == songIdentity){

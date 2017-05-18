@@ -75,7 +75,7 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                 }, function (err, resp) {
                     if (err)
                         throw err;
-                    let items = JSON.parse(resp._body).feedback.thumbsUp;
+                    let items = JSON.parse(resp).feedback.thumbsUp;
                     for (let i = 0; i < items.length; i++) {
                         let item = items[i];
                         if (item.songIdentity == songIdentity) {
