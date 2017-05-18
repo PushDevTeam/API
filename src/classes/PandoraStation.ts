@@ -65,6 +65,7 @@ export class PandoraStation extends PandoraBase {
             "includeExtendedAttributes": true
         }, function (err, resp){
             if (err) throw err;
+            console.log('isSongAlreadyLiked response', resp);
             let items = JSON.parse(resp).feedback.thumbsUp;
             for (let i=0; i<items.length; i++){
                 let item = items[i];
