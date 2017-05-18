@@ -26,7 +26,7 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                 if (Boolean(parseInt(req.params.isPositive))) {
                     //first check if song already has feedback on this station
                     const feedback = self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity);
-                    if (!(feedback === false)) {
+                    if (!(feedback == false)) {
                         //user is un-thumbupping
                         self.pandora.request("station.deleteFeedback", {
                             'feedbackId': feedback.feedbackId
@@ -34,19 +34,20 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                             if (err)
                                 throw err;
                             res.send(resp);
-                            next();
+                        });
+                    }
+                    else {
+                        self.pandora.request("station.addFeedback", {
+                            'stationToken': req.params.stationToken,
+                            'trackToken': req.params.trackToken,
+                            'isPositive': Boolean(parseInt(req.params.isPositive))
+                        }, function (err, resp) {
+                            if (err)
+                                throw err;
+                            res.send(resp);
                         });
                     }
                 }
-                self.pandora.request("station.addFeedback", {
-                    'stationToken': req.params.stationToken,
-                    'trackToken': req.params.trackToken,
-                    'isPositive': Boolean(parseInt(req.params.isPositive))
-                }, function (err, resp) {
-                    if (err)
-                        throw err;
-                    res.send(resp);
-                });
             });
         };
         this.getStation = (req, res, next) => {
