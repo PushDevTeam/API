@@ -65,7 +65,7 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
         };
         this.isSongAlreadyLiked = (stationToken, songIdentity) => {
             const self = this;
-            let returnable;
+            let returnable = false;
             self.login(function (err) {
                 if (err)
                     throw err;
@@ -82,7 +82,6 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                             returnable = item;
                         }
                     }
-                    returnable = false;
                 });
             });
             return returnable;

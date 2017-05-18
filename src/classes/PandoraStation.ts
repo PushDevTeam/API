@@ -54,9 +54,9 @@ export class PandoraStation extends PandoraBase {
           })
       })
   }
-  isSongAlreadyLiked = (stationToken, songIdentity) =>{
+  isSongAlreadyLiked = (stationToken, songIdentity): boolean | any =>{
     const self = this;
-    let returnable;
+    let returnable = false;
     self.login(function(err){
         if (err) throw err;
         self.pandora.request("station.getStation", {
@@ -71,7 +71,6 @@ export class PandoraStation extends PandoraBase {
                     returnable = item;
                 }
             }
-            returnable = false;
         })
     })
     return returnable;
