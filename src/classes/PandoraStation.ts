@@ -20,7 +20,7 @@ export class PandoraStation extends PandoraBase {
       if (err) throw err;
       if (Boolean(parseInt(req.params.isPositive))){
         //first check if song already has feedback on this station
-        const feedback = self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity);
+        let feedback = self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity);
         if (!(feedback == false)){
             //user is un-thumbupping
             self.pandora.request("station.deleteFeedback", {
