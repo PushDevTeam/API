@@ -21,7 +21,8 @@ export class PandoraStation extends PandoraBase {
       if (err) throw err;
       if (Boolean(parseInt(req.params.isPositive))){
         //first check if song already has feedback on this station
-        self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity, function(){
+        self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity, function(err){
+            if (err) throw err;
             if (!(self.feedbackReturn == false)){
                 //user is un-thumbupping
                 self.pandora.request("station.deleteFeedback", {
@@ -57,7 +58,7 @@ export class PandoraStation extends PandoraBase {
           })
       })
   }
-  isSongAlreadyLiked = (stationToken, songIdentity, NextFunction): boolean | any =>{
+  isSongAlreadyLiked = (stationToken, songIdentity, next): boolean | any =>{
     const self = this;
     let returnable = false;
     return self.login(function(err){
@@ -74,12 +75,12 @@ export class PandoraStation extends PandoraBase {
                 if (item.songIdentity == songIdentity){
                     //returnable = item;
                     self.feedbackReturn = item;
-                    return NextFunction();
+                    return next(err);
                     //return item;
                 }
             }
             self.feedbackReturn = returnable
-            return NextFunction();
+            return next(err);
             //return returnable;
 
         })
