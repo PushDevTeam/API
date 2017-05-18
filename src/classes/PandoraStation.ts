@@ -18,6 +18,8 @@ export class PandoraStation extends PandoraBase {
     const self = this;
     self.login(function(err){
       if (err) throw err;
+      //first check if song already has feedback on this station
+      
       self.pandora.request("station.addFeedback", {
         'stationToken': req.params.stationToken,
         'trackToken': req.params.trackToken,
@@ -26,6 +28,32 @@ export class PandoraStation extends PandoraBase {
         if (err) throw err;
         res.send(resp);
       })
+    })
+  }
+  getStation = (req: Request, res: Response, next: NextFunction) => {
+      const self = this;
+      self.login(function(err){
+          if (err) throw err;
+          self.pandora.request("station.getStation", {
+            "stationToken": req.params.stationToken,
+            "includeExtendedAttributes": true
+          }, function(err, resp){
+              if (err) throw err;
+              res.send(resp);
+          })
+      })
+  }
+  isSongAlreadyLiked = (stationToken, trackToken) =>{
+    const self = this;
+    self.login(function(err){
+        if (err) throw err;
+        self.pandora.request("station.getStation", {
+            "stationToken": stationToken,
+            "includeExtendedAttributes": true
+        }, function (err, resp){
+            if (err) throw err;
+            
+        })
     })
   }
 }
