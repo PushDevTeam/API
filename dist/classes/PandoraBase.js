@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const Anesidora = require('anesidora');
-const USERNAME = 'ante@thepushapp.com';
-const PASSWORD = 'ant3@thepushapp';
-const USERNAME2 = 'pushdailydotfit@gmail.com';
-const PASSWORD2 = 'pushdailydotfit';
+const USERNAME2 = 'ante@thepushapp.com';
+const PASSWORD2 = 'ant3@thepushapp';
+const USERNAME = 'pushdailydotfit@gmail.com';
+const PASSWORD = 'pushdailydotfit';
 class PandoraBase {
     constructor() {
         this.pandora = new Anesidora(USERNAME, PASSWORD);
