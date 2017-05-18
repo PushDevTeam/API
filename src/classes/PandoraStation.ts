@@ -70,11 +70,13 @@ export class PandoraStation extends PandoraBase {
             for (let i=0; i<items.length; i++){
                 let item = items[i];
                 if (item.songIdentity == songIdentity){
-                    returnable = item;
+                    //returnable = item;
+                    return item;
                 }
             }
+            return returnable;
+
         })
     })
-    return returnable;
   }
 }
