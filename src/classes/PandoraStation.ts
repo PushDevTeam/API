@@ -1,6 +1,7 @@
 import {Router, Request, Response, NextFunction} from 'express';
 import {PandoraBase} from './PandoraBase';
 export class PandoraStation extends PandoraBase {
+    feedbackReturn: any;
   constructor(){super()};
   getPlaylist = (req: Request, res: Response, next: NextFunction) => {
     const self = this;
@@ -20,25 +21,26 @@ export class PandoraStation extends PandoraBase {
       if (err) throw err;
       if (Boolean(parseInt(req.params.isPositive))){
         //first check if song already has feedback on this station
-        let feedback = self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity);
-        if (!(feedback == false)){
-            //user is un-thumbupping
-            self.pandora.request("station.deleteFeedback", {
-                'feedbackId': feedback.feedbackId
-            }, function(err, resp){
-                if (err) throw err;
-                res.send(resp);
-            })
-        } else {
-            self.pandora.request("station.addFeedback", {
-                'stationToken': req.params.stationToken,
-                'trackToken': req.params.trackToken,
-                'isPositive': Boolean(parseInt(req.params.isPositive))
-            }, function(err, resp){
-                if (err) throw err;
-                res.send(resp);
-            })
-        }
+        self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity, function(){
+            if (!(self.feedbackReturn == false)){
+                //user is un-thumbupping
+                self.pandora.request("station.deleteFeedback", {
+                    'feedbackId': self.feedbackReturn.feedbackId
+                }, function(err, resp){
+                    if (err) throw err;
+                    res.send(resp);
+                })
+            } else {
+                self.pandora.request("station.addFeedback", {
+                    'stationToken': req.params.stationToken,
+                    'trackToken': req.params.trackToken,
+                    'isPositive': Boolean(parseInt(req.params.isPositive))
+                }, function(err, resp){
+                    if (err) throw err;
+                    res.send(resp);
+                })
+            }
+        });
       }
     })
   }
@@ -55,7 +57,7 @@ export class PandoraStation extends PandoraBase {
           })
       })
   }
-  isSongAlreadyLiked = (stationToken, songIdentity): boolean | any =>{
+  isSongAlreadyLiked = (stationToken, songIdentity, NextFunction): boolean | any =>{
     const self = this;
     let returnable = false;
     return self.login(function(err){
@@ -71,10 +73,14 @@ export class PandoraStation extends PandoraBase {
                 let item = items[i];
                 if (item.songIdentity == songIdentity){
                     //returnable = item;
-                    return item;
+                    self.feedbackReturn = item;
+                    return NextFunction();
+                    //return item;
                 }
             }
-            return returnable;
+            self.feedbackReturn = returnable
+            return NextFunction();
+            //return returnable;
 
         })
     })

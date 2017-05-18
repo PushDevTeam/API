@@ -25,28 +25,29 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                     throw err;
                 if (Boolean(parseInt(req.params.isPositive))) {
                     //first check if song already has feedback on this station
-                    let feedback = self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity);
-                    if (!(feedback == false)) {
-                        //user is un-thumbupping
-                        self.pandora.request("station.deleteFeedback", {
-                            'feedbackId': feedback.feedbackId
-                        }, function (err, resp) {
-                            if (err)
-                                throw err;
-                            res.send(resp);
-                        });
-                    }
-                    else {
-                        self.pandora.request("station.addFeedback", {
-                            'stationToken': req.params.stationToken,
-                            'trackToken': req.params.trackToken,
-                            'isPositive': Boolean(parseInt(req.params.isPositive))
-                        }, function (err, resp) {
-                            if (err)
-                                throw err;
-                            res.send(resp);
-                        });
-                    }
+                    self.isSongAlreadyLiked(req.params.stationToken, req.params.songIdentity, function () {
+                        if (!(self.feedbackReturn == false)) {
+                            //user is un-thumbupping
+                            self.pandora.request("station.deleteFeedback", {
+                                'feedbackId': self.feedbackReturn.feedbackId
+                            }, function (err, resp) {
+                                if (err)
+                                    throw err;
+                                res.send(resp);
+                            });
+                        }
+                        else {
+                            self.pandora.request("station.addFeedback", {
+                                'stationToken': req.params.stationToken,
+                                'trackToken': req.params.trackToken,
+                                'isPositive': Boolean(parseInt(req.params.isPositive))
+                            }, function (err, resp) {
+                                if (err)
+                                    throw err;
+                                res.send(resp);
+                            });
+                        }
+                    });
                 }
             });
         };
@@ -65,7 +66,7 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                 });
             });
         };
-        this.isSongAlreadyLiked = (stationToken, songIdentity) => {
+        this.isSongAlreadyLiked = (stationToken, songIdentity, NextFunction) => {
             const self = this;
             let returnable = false;
             return self.login(function (err) {
@@ -83,10 +84,14 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                         let item = items[i];
                         if (item.songIdentity == songIdentity) {
                             //returnable = item;
-                            return item;
+                            self.feedbackReturn = item;
+                            return NextFunction();
+                            //return item;
                         }
                     }
-                    return returnable;
+                    self.feedbackReturn = returnable;
+                    return NextFunction();
+                    //return returnable;
                 });
             });
         };
