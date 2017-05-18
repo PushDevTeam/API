@@ -34,6 +34,7 @@ class PandoraStation extends PandoraBase_1.PandoraBase {
                             if (err)
                                 throw err;
                             res.send(resp);
+                            next();
                         });
                     }
                 }

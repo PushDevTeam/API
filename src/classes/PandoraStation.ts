@@ -28,6 +28,7 @@ export class PandoraStation extends PandoraBase {
             }, function(err, resp){
                 if (err) throw err;
                 res.send(resp);
+                next();
             })
         }
       }
