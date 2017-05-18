@@ -58,7 +58,7 @@ export class PandoraStation extends PandoraBase {
   isSongAlreadyLiked = (stationToken, songIdentity): boolean | any =>{
     const self = this;
     let returnable = false;
-    self.login(function(err){
+    return self.login(function(err){
         if (err) throw err;
         self.pandora.request("station.getStation", {
             "stationToken": stationToken,
