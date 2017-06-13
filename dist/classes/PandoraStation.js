@@ -4,16 +4,26 @@ const PandoraBase_1 = require("./PandoraBase");
 class PandoraStation extends PandoraBase_1.PandoraBase {
     constructor() {
         super();
+        this.altCreds = false;
         this.getPlaylist = (req, res, next) => {
             const self = this;
-            self.login(function (err) {
+            let loginFn;
+            if (!this.altCreds) {
+                loginFn = self.login;
+            }
+            else {
+                loginFn = self.tryAgain;
+            }
+            loginFn(function (err) {
                 if (err)
                     throw err;
                 self.pandora.request("station.getPlaylist", {
                     'stationToken': req.params.id
                 }, function (err, playlist) {
-                    if (err)
-                        throw err;
+                    if (err && !this.altCreds) {
+                        this.altCreds = true;
+                        return this.getPlaylist(req, res, next);
+                    }
                     res.send(playlist);
                 });
             });
