@@ -2,15 +2,25 @@ import {Router, Request, Response, NextFunction} from 'express';
 import {PandoraBase} from './PandoraBase';
 export class PandoraStation extends PandoraBase {
     feedbackReturn: any;
+    altCreds = false;
   constructor(){super()};
   getPlaylist = (req: Request, res: Response, next: NextFunction) => {
     const self = this;
-    self.login(function(err){
+    let loginFn;
+    if (!this.altCreds){
+        loginFn = self.login;
+    } else {
+        loginFn = self.tryAgain;
+    }
+    loginFn(function(err){
       if (err) throw err;
       self.pandora.request("station.getPlaylist", {
         'stationToken': req.params.id
       }, function(err, playlist){
-        if (err) throw err;
+        if (err && !this.altCreds) {
+            this.altCreds = true;
+            return this.getPlaylist(req, res, next);
+        }
         res.send(playlist);
       })
     })
