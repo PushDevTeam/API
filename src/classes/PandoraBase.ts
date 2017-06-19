@@ -4,7 +4,7 @@ const PASSWORD2 = 'ant3@thepushapp';
 const USERNAME = 'pushdailydotfit@gmail.com';
 const PASSWORD = 'pushdailydotfit';
 export class PandoraBase {
-    pandora: any = new Anesidora(USERNAME2, PASSWORD2);
+    pandora: any = new Anesidora(USERNAME, PASSWORD);
     constructor(){
     }
     login = (callback) => {
@@ -18,7 +18,7 @@ export class PandoraBase {
       }
     }
     tryAgain = (callback) => {
-      this.pandora = new Anesidora(USERNAME, PASSWORD)
+      this.pandora = new Anesidora(USERNAME2, PASSWORD2)
       return this.login(callback);
     }
   }

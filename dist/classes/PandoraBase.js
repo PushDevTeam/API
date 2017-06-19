@@ -7,7 +7,7 @@ const USERNAME = 'pushdailydotfit@gmail.com';
 const PASSWORD = 'pushdailydotfit';
 class PandoraBase {
     constructor() {
-        this.pandora = new Anesidora(USERNAME2, PASSWORD2);
+        this.pandora = new Anesidora(USERNAME, PASSWORD);
         this.login = (callback) => {
             if (this.pandora.authData === null) {
                 return this.pandora.login(function (err) {
@@ -21,7 +21,7 @@ class PandoraBase {
             }
         };
         this.tryAgain = (callback) => {
-            this.pandora = new Anesidora(USERNAME, PASSWORD);
+            this.pandora = new Anesidora(USERNAME2, PASSWORD2);
             return this.login(callback);
         };
     }
