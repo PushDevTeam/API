@@ -1,8 +1,8 @@
 const Anesidora = require('anesidora');
-const USERNAME2 = 'ante@thepushapp.com';
-const PASSWORD2 = 'ant3@thepushapp';
-const USERNAME = 'pushdailydotfit@gmail.com';
-const PASSWORD = 'pushdailydotfit';
+const USERNAME = 'ante@thepushapp.com';
+const PASSWORD = 'ant3@thepushapp';
+const USERNAME2 = 'pushdailydotfit@gmail.com';
+const PASSWORD2 = 'pushdailydotfit';
 export class PandoraBase {
     pandora: any = new Anesidora(USERNAME, PASSWORD);
     constructor(){
